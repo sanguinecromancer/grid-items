@@ -1,82 +1,9 @@
-// import React, { useState, useEffect } from 'react';
-// import Loading from './Loading';
-// import Items from './assets/Components/Items';
 
-// const url = 'http://54.73.73.228:4369/api/images';
-
-// function App() {
-//   const [loading, setLoading] = useState(true);
-//   const [items, setItems] = useState([]);
-
-
-//   const fetchItems = async () => {
-//     // will use later
-//     setLoading(true);
-//     try {
-//       const response = await fetch(url);
-//       const objectItems = await response.json();
-//       console.log(objectItems);
-
-    
-//         let items = Object.values(objectItems);
-      
-
-//       console.log(items[0]);
-
-//       setLoading(false);
-//       if (items?.length > 1) {
-//         setItems(items);
-//       }
-//     } catch (error) {
-//       setLoading(false);
-//       console.log(error);
-//     }
-//   };
-//   useEffect(() => {
-//     fetchItems();
-//   }, []);
-//   if (loading) {
-//     return (
-//       <main>
-//         <Loading />
-//       </main>
-//     );
-//   }
-//   if (items == undefined || items.length === 0) {
-//     return (
-//       <main>
-//         <div className='title'>
-//           <h2>no items left</h2>
-//           <button className='btn' onClick={() => fetchItems()}>
-//             refresh
-//           </button>
-//         </div>
-//       </main>
-//     );
-//   }
-//   else if (items) {
-
-//     console.log(items);
-//     return (
-//       <main>
-//         <Items items={items} />
-//       </main>
-//     );
-//   }
-//   else {
-//     return (
-//       <main>
-//         <Loading />
-//       </main>
-//     );
-//   }
-// }
-
-// export default App;
 
 import React, { useState, useEffect } from 'react';
 import Loading from './Loading';
 import Items from './assets/Components/Items';
+
 
 const url = 'http://54.73.73.228:4369/api/images';
 

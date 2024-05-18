@@ -10,7 +10,7 @@ const Items = ({ items }) => {
       </div>
       <div className='tours'>
         { items ?
-         items?.map((item) => {
+         items?.map((item) => {       
           return <Item key={item.index} {...item} />;
         })
         :
