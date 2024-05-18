@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ItemPage from './ItemPage';
 
 
-const Item = ({ index, image,  title, description }) => {
+const SingleItem = ({ index, image,  title, description }) => {
   //const [readMore, setReadMore] = useState(false);
   return (
     <article className='single-tour'>
@@ -16,4 +16,4 @@ const Item = ({ index, image,  title, description }) => {
   );
 };
 
-export default Item;
+export default SingleItem;

@@ -1,6 +1,11 @@
 import React from 'react';
-import Item from './Item';
-const Items = ({ items }) => {
+import SingleItem from './SingleItem';
+import { useSelector } from 'react-redux';
+
+
+const Items = () => {
+  const { items, total, amount } = useSelector((state) => state.items);
+
 
   return (
     <section>
@@ -11,7 +16,7 @@ const Items = ({ items }) => {
       <div className='tours'>
         { items ?
          items?.map((item) => {       
-          return <Item key={item.index} {...item} />;
+          return <SingleItem key={item.index} {...item} />;
         })
         :
         <div>not found</div>

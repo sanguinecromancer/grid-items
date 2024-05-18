@@ -7,7 +7,7 @@ import Items from './assets/Components/Items';
 
 const url = 'http://54.73.73.228:4369/api/images';
 
-let cache = [];
+export let cache = [];
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -33,6 +33,7 @@ function App() {
       console.error('Fetching data failed:', error);
       if (cache.length > 0) {
         setItems(cache);  // Use cached data if fetch fails
+        
       }
       setLoading(false);
     }
@@ -77,3 +78,4 @@ function App() {
 
 export default App;
 
+export const itemList = [{ index: 1, name: 2}, { index: 2, name: 'jane'}];
