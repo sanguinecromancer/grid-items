@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SingleItem from './SingleItem';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -7,6 +7,13 @@ const Items = () => {
 
   const dispatch = useDispatch();
   const { items } = useSelector((store) => store.items);
+
+  const [activeId, setActiveId] = useState(null);
+
+  const toggleSetActive = (id) => {
+    const newActiveId = id === activeId ? null : id;
+    setActiveId(newActiveId);
+  }
 
   return (
     <section>
@@ -17,7 +24,7 @@ const Items = () => {
       <div className='tours'>
         { items ?
          items?.map((item) => {       
-          return <SingleItem key={item.index} {...item} />;
+          return <SingleItem key={item.index} activeId={activeId} {...item} toggleSetActive={toggleSetActive} />;
         })
         :
         <div>not found</div>

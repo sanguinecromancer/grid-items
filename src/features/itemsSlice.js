@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { nanoid } from 'nanoid';
 
 const url = 'http://54.73.73.228:4369/api/images';
 
@@ -19,11 +20,18 @@ export const getItems = createAsyncThunk(
       const resp = await axios(url);
      
       const itemsArray = Object.values(resp.data);
+      const processedData = itemsArray.map((item) => {
+        return {
+          id: nanoid(),
+          ...item
+        }
+      })
    
       // Check if the response data is valid
       if (itemsArray?.length > 1) {
         // Update the cache with the valid response data
-        cache = JSON.parse(JSON.stringify(itemsArray)); 
+        cache = JSON.parse(JSON.stringify(processedData)); 
+        console.log(cache);
         return cache;
       } else {
 
@@ -43,8 +51,9 @@ const itemsSlice = createSlice({
   initialState,
   reducers: {
     setActive: (state, { payload }) => {
-      const item = state.items.find((i) => i.index === payload.index);
-      item.active = !item.active;
+      const item = state.items.find((i) => i.id=== payload.id);
+      console.log(item);
+      //item.active = !item.active;
     },
   },
   extraReducers: (builder) => {
