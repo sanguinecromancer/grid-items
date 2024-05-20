@@ -1,11 +1,12 @@
 import React from 'react';
 import SingleItem from './SingleItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const Items = () => {
-  const { items, total, amount } = useSelector((state) => state.items);
 
+  const dispatch = useDispatch();
+  const { items } = useSelector((store) => store.items);
 
   return (
     <section>
