@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import SingleItem from './SingleItem';
 import { useDispatch, useSelector } from 'react-redux';
+import { setActive } from '../../features/itemsSlice';
 
 
 const Items = () => {
 
   const dispatch = useDispatch();
-  const { items } = useSelector((store) => store.items);
+  const { items, activeId } = useSelector((store) => store.items);
 
-  const [activeId, setActiveId] = useState(null);
 
   const toggleSetActive = (id) => {
     const newActiveId = id === activeId ? null : id;
-    setActiveId(newActiveId);
+    dispatch(setActive(newActiveId));
   }
 
   return (
@@ -24,7 +24,7 @@ const Items = () => {
       <div className='tours'>
         { items ?
          items?.map((item) => {       
-          return <SingleItem key={item.index} activeId={activeId} {...item} toggleSetActive={toggleSetActive} />;
+          return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item} />;
         })
         :
         <div>not found</div>

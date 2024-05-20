@@ -9,7 +9,8 @@ const initialState = {
   amount: 5,
   total: 0,
   loading: true,
-  errors: null
+  errors: null,
+  activeId: undefined
 };
 
 let cache = [];
@@ -30,13 +31,10 @@ export const getItems = createAsyncThunk(
       // Check if the response data is valid
       if (itemsArray?.length > 1) {
         // Update the cache with the valid response data
-        cache = JSON.parse(JSON.stringify(processedData)); 
-        console.log(cache);
+        cache = JSON.parse(JSON.stringify(processedData));
         return cache;
       } else {
-
         // If the response data is not valid, return the cached data
-        console.log(cache);
         return cache.length > 1 ? cache : thunkAPI.rejectWithValue('No valid data available');
       }
     } catch (error) {
@@ -51,9 +49,8 @@ const itemsSlice = createSlice({
   initialState,
   reducers: {
     setActive: (state, { payload }) => {
-      const item = state.items.find((i) => i.id=== payload.id);
-      console.log(item);
-      //item.active = !item.active;
+      const item = state.items.find((i) => i.id === payload);
+      state.activeId = payload;
     },
   },
   extraReducers: (builder) => {

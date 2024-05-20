@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/itempage/:index",
+    path: "/itempage/:id",
     element: <ItemPage/>,
   },
 ]);
