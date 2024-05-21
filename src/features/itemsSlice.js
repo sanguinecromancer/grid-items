@@ -21,12 +21,17 @@ export const getItems = createAsyncThunk(
       const resp = await axios(url);
      
       const itemsArray = Object.values(resp.data);
-      const processedData = itemsArray.map((item) => {
+
+      const processedData = itemsArray
+        .slice() // Create a shallow copy of the array to avoid mutating the original array
+        .sort((a, b) => a.index - b.index) // Sort the array by the index property
+        .map((item) => {
         return {
-          id: nanoid(),
-          ...item
-        }
-      })
+        id: nanoid(), // Add a unique id using nanoid
+        ...item
+    };
+  });
+
    
       // Check if the response data is valid
       if (itemsArray?.length > 1) {

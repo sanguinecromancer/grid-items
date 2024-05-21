@@ -3,15 +3,13 @@ import SingleItem from './SingleItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActive } from '../../features/itemsSlice';
 
-
 const Items = () => {
 
   const dispatch = useDispatch();
   const { items, activeId } = useSelector((store) => store.items);
 
-
-  const toggleSetActive = (id) => {
-    const newActiveId = id === activeId ? null : id;
+  const toggleSetActive = (index) => {
+    const newActiveId = index === activeId ? null : index;
     dispatch(setActive(newActiveId));
   }
 
@@ -22,12 +20,12 @@ const Items = () => {
         <div className='title-underline'></div>
       </div>
       <div className='tours'>
-        { items ?
+      { items ?
          items?.map((item) => {       
-          return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item} />;
+          return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item} isActive={item.index === activeId}/>;
         })
         :
-        <div>not found</div>
+          <div>not found</div>
         }
       </div>
     </section>

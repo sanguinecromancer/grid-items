@@ -6,20 +6,25 @@ import { setActive } from '../../features/itemsSlice';
 import placeholder from '../placeholder.jpeg';
 
 
-
-const SingleItem = ({ toggleSetActive, item }) => {
+const SingleItem = ({ toggleSetActive, item, isActive }) => {
 
   const { id, index, image = placeholder,  title, description } = item;
 
   const { activeId } = useSelector((store) => store.items);
 
-  const isActive = id === activeId;
-
+  const [imgError, setImgError] = useState(false);
   return (
     <article className='single-tour'>
-      <Link to={`/itempage/${id}`} onClick={() => toggleSetActive(id)}> 
-        <img src={image} alt={title} className='img' />
+      <Link to={`/itempage/${id}`} onClick={() => toggleSetActive(index)}> 
+      <img
+        src={imgError ? placeholder : item.image}
+        alt={item.title}
+        className='img'
+        onError={() => setImgError(true)}
+      />
       </Link>
+        <h2>Hi</h2>
+        <h2 className={isActive ? 'active' : ''}>{isActive ? 'Active' : 'Not Active'}</h2>
     </article>
   );
 };
