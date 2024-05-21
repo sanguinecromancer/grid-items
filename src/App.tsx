@@ -1,22 +1,21 @@
 
 
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Loading from './Loading';
 import Items from './assets/Components/Items';
-import { getItems } from './features/itemsSlice';
-import { useDispatch, useSelector } from 'react-redux';
-
-export let cache = [];
+import { fetchItems } from './features/itemsSlice.ts';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { AppDispatch, RootState } from './store.ts';
+import { useAppDispatch, useAppSelector } from './hooks.ts';
 
 function App() {
 
-  const { items, loading } = useSelector((store) => store.items);
- 
-  const dispatch = useDispatch();
+  const { loading } = useAppSelector((state) => state.items);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getItems());
-  }, []);
+    dispatch(fetchItems());
+  }, [dispatch]);
 
   if (loading) {
     return (

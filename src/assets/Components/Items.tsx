@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SingleItem from './SingleItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActive } from '../../features/itemsSlice';
+import { setActive } from '../../features/itemsSlice.ts';
+import { Item } from '../../features/itemTypes';
+import { RootState, AppDispatch } from '../../store';
 
-const Items = () => {
+const Items: React.FC = () => {
 
-  const dispatch = useDispatch();
-  const { items, activeId } = useSelector((store) => store.items);
+  const dispatch: AppDispatch = useDispatch();
+  const { items, activeId } = useSelector((store: RootState) => store.items);
 
-  const toggleSetActive = (index) => {
-    const newActiveId = index === activeId ? null : index;
+  const toggleSetActive = (index: number) => {
+    const newActiveId = index == activeId ? -1: index;
     dispatch(setActive(newActiveId));
   }
 
@@ -21,8 +23,8 @@ const Items = () => {
       </div>
       <div className='tours'>
       { items ?
-         items?.map((item) => {       
-          return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item} isActive={item.index === activeId}/>;
+          items.map((item: Item) => {       
+          return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item}/>;
         })
         :
           <div>not found</div>

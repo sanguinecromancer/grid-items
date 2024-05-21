@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import placeholder from '../placeholder.jpeg';
+import placeholder from '../../../placeholder.jpeg';
+import { RootState } from '../../store';
+import { Item } from '../../features/itemTypes';
 
-const ItemPage = () => {
-  const { id } = useParams();
+const ItemPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
 
   // Select the item from the Redux store based on the ID from the URL
 
-  const item = useSelector((store) => store.items?.items.find((item) => item.id === id));
+  //const item = useSelector((store) => store.items?.items.find((item) => item.id === id));
+  const item: Item | undefined = useSelector((store: RootState) => 
+    store.items.items.find((item) => item.id === id)
+  );
+
   const [imgError, setImgError] = useState(false);
 
   // Show a loading message or a placeholder if the item is not found
