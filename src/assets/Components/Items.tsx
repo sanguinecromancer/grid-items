@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setActive } from '../../features/itemsSlice.ts';
 import { Item } from '../../features/itemTypes';
 import { RootState, AppDispatch } from '../../store';
+import { selectItems, selectActiveId } from '../../features/itemsSelectors';
 
 const Items: React.FC = () => {
 
   const dispatch: AppDispatch = useDispatch();
-  const { items, activeId } = useSelector((store: RootState) => store.items);
+
+  const items = useSelector((state: RootState) => selectItems(state));
+  const activeId = useSelector((state: RootState) => selectActiveId(state));
 
   const toggleSetActive = (index: number) => {
     const newActiveId = index == activeId ? -1: index;

@@ -8,23 +8,18 @@ import { Item } from '../../features/itemTypes';
 const ItemPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
-  // Select the item from the Redux store based on the ID from the URL
-
-  //const item = useSelector((store) => store.items?.items.find((item) => item.id === id));
   const item: Item | undefined = useSelector((store: RootState) => 
     store.items.items.find((item) => item.id === id)
   );
 
   const [imgError, setImgError] = useState(false);
 
-  // Show a loading message or a placeholder if the item is not found
   if (!item) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
-      {/* <img src={item.image || placeholder} alt={item.title} className='img' /> */}
       <img
         src={imgError ? placeholder : item.image}
         alt={item.title}

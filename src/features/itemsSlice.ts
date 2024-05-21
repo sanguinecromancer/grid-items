@@ -6,7 +6,7 @@ import { Item, ItemsResponse, FetchError } from './itemTypes';
 
 const url = 'http://54.73.73.228:4369/api/images';
 
-interface ItemsState {
+export interface ItemsState {
   items: Item[];
   amount: number;
   total: number;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Link } from "react-router-dom";
 //import ItemPage from './ItemPage';
 import { useSelector } from 'react-redux';
@@ -12,9 +12,9 @@ interface SingleItemProps {
   item: Item;
 }
 
-const SingleItem: React.FC<SingleItemProps> = ({ toggleSetActive, item }) => {
+const SingleItem: React.FC<SingleItemProps> = memo(({ toggleSetActive, item }) => {
 
-  const { id, index, title, description } = item;
+  const { id, index, title, description, image } = item;
 
   const { activeId } = useSelector((store: RootState) => store.items);
 
@@ -25,7 +25,7 @@ const SingleItem: React.FC<SingleItemProps> = ({ toggleSetActive, item }) => {
     <article className='single-tour'>
       <Link to={`/itempage/${id}`} onClick={() => toggleSetActive(index)}> 
       <img
-        src={imgError ? placeholder : item.image}
+        src={imgError ? placeholder : image}
         alt={item.title}
         className='img'
         onError={() => setImgError(true)}
@@ -35,6 +35,6 @@ const SingleItem: React.FC<SingleItemProps> = ({ toggleSetActive, item }) => {
         <h2 className={isActive ? 'active' : ''}>{isActive ? 'Active' : 'Not Active'}</h2>
     </article>
   );
-};
+});
 
 export default SingleItem;
