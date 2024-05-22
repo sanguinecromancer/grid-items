@@ -12,4 +12,3 @@ export interface ItemsResponse {
 export interface FetchError {
   message: string;
 }
-  

@@ -1,5 +1,5 @@
 import fetchMock from 'jest-fetch-mock';
-import { fetchItems, cache, url } from '../src/helper/fetchItems';
+import { fetchItems, cache } from '../src/helper/fetchItems';
 
 fetchMock.enableMocks();
 

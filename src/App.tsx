@@ -21,6 +21,7 @@ function App() {
       </main>
     );
   }
+  
   if (!items || items.length === 0) {
     return (
       <main>
