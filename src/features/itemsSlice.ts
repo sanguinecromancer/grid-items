@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { Item, ItemsResponse, FetchError } from './itemTypes';
 
 
-const url = 'http://54.73.73.228:4369/api/images';
+export const url = 'http://54.73.73.228:4369/api/images';
 
 export interface ItemsState {
   items: Item[];
@@ -24,7 +24,7 @@ const initialState: ItemsState = {
   activeId: null
 };
 
-let cache: Item[] = [];
+export let cache: Item[] = [];
 export const fetchItems = createAsyncThunk<Item[], void, { rejectValue: FetchError }>(
   'items/fetchAll',
   async (_, thunkAPI) => {

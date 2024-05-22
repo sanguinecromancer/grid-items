@@ -9,7 +9,7 @@ const ItemPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
   const item: Item | undefined = useSelector((store: RootState) => 
-    store.items.items.find((item) => item.id === id)
+    store?.items.items.find((item) => item.id === id)
   );
 
   const [imgError, setImgError] = useState(false);

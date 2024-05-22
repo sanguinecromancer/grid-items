@@ -33,6 +33,8 @@ const SingleItem: React.FC<SingleItemProps> = memo(({ toggleSetActive, item }) =
       </Link>
         <h2>Hi</h2>
         <h2 className={isActive ? 'active' : ''}>{isActive ? 'Active' : 'Not Active'}</h2>
+        <p>{title}</p>
+        <p>{description}</p>
     </article>
   );
 });
