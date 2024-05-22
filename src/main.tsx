@@ -6,7 +6,6 @@ import store from './store.ts';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-
 const App = React.lazy(() => import('./App'));
 const ItemPage = React.lazy(() => import('./assets/Components/ItemPage'));
 

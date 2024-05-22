@@ -26,7 +26,6 @@ describe('fetchItems API', () => {
   });
 
   test('should return cached items if the API call fails', async () => {
-    // Set initial cache
     const initialCache = [
       { id: '1', title: 'Item 1', image: 'img1.jpg', description: 'Description 1', index: 1 },
     ];
