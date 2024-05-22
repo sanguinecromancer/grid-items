@@ -1,5 +1,4 @@
 // Helping JEST to mock the fetches
-
 export const url = 'http://54.73.73.228:4369/api/images';
 
 export interface Item {

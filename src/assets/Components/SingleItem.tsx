@@ -29,7 +29,7 @@ const SingleItem: React.FC<SingleItemProps> = memo(({ toggleSetActive, item }) =
       </Link>
         <div className='item-info'>
           <h5>{title}</h5>
-          <p>{description}</p>
+          <p>{description || 'No description'}</p>
         </div>
     </article>
   );

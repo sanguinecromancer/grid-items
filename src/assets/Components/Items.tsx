@@ -25,9 +25,9 @@ const Items: React.FC = () => {
         <div className='title-underline'></div>
       </div>
       <div className='items'>
-      { items ?
-          items.map((item: Item) => {       
-          return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item}/>;
+        { items ?
+            items.map((item: Item) => {       
+            return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item}/>;
         })
         :
           <div>not found</div>

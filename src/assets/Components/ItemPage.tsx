@@ -29,10 +29,9 @@ const ItemPage: React.FC = () => {
         />
         <div className='item-info'>
           <h2>{item.title}</h2>
-          {/* <h1>{item.index}</h1> */}
           <h3>{item.description}</h3>
           <Link to='/'>
-          <button className="go-home-btn btn-block btn">Go Home</button>
+            <button className="go-home-btn btn-block btn">Go Home</button>
           </Link>
         </div>
       </div>

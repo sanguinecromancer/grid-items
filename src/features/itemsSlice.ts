@@ -65,7 +65,7 @@ const itemsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchItems.pending, (state) => {
-        state.loading = true;
+        state.loading = true; // state updates are immutable in Redux toolkit, thanks to Immer.js
       })
       .addCase(fetchItems.fulfilled, (state, action: PayloadAction<Item[]>) => {
         state.loading = false;
@@ -75,7 +75,7 @@ const itemsSlice = createSlice({
         state.loading = false;
         state.errors = action.payload?.message || 'Failed to fetch items';
       });
-  },
+    },
 });
 
 export const { setActive } = itemsSlice.actions;
