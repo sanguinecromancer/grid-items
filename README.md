@@ -1,5 +1,11 @@
 Hello! This is Zeynep :) 
 
+For docker:
+
+docker pull zeynepaykal/unith-test:latest
+
+docker run -p 3000:3000 zeynepaykal/unith-test:latest
+
 For running the app:
 
 npm install
