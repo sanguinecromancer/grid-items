@@ -37,5 +37,9 @@ I added a simple one which mimics the fetch and caching of the items.
 CSS: 
 I am using a grid style with my own file (not a framework).
 
+Caching images: 
+I tried to cache the images to the browser with Base64 string, but it was blocked by CORS policies. I would need to investigate more on that.
+
+Looking forward to speak :)
 
 
