@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 //import ItemPage from './ItemPage';
 import { useSelector } from 'react-redux';
 //import { setActive } from '../../features/itemsSlice.ts';
-import placeholder from '../../../placeholder.jpeg';
+import placeholder from '../placeholder.jpg';
 import { RootState} from '../../store';
 import { Item } from '../../features/itemTypes';
 
@@ -22,7 +22,7 @@ const SingleItem: React.FC<SingleItemProps> = memo(({ toggleSetActive, item }) =
 
   const [imgError, setImgError] = useState(false);
   return (
-    <article className='single-tour'>
+    <article className='single-item'>
       <Link to={`/itempage/${id}`} onClick={() => toggleSetActive(index)}> 
       <img
         src={imgError ? placeholder : image}
@@ -31,10 +31,11 @@ const SingleItem: React.FC<SingleItemProps> = memo(({ toggleSetActive, item }) =
         onError={() => setImgError(true)}
       />
       </Link>
-        <h2>Hi</h2>
-        <h2 className={isActive ? 'active' : ''}>{isActive ? 'Active' : 'Not Active'}</h2>
-        <p>{title}</p>
-        <p>{description}</p>
+        <h4 className={isActive ? 'active' : ''}>{isActive ? 'Active' : 'Not Active'}</h4> 
+        <div className='item-info'>
+          <h5>{title}</h5>
+          <p>{description}</p>
+        </div>
     </article>
   );
 });

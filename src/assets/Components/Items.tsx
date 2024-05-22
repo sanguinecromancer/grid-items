@@ -24,7 +24,7 @@ const Items: React.FC = () => {
         <h2>Items</h2>
         <div className='title-underline'></div>
       </div>
-      <div className='tours'>
+      <div className='items'>
       { items ?
           items.map((item: Item) => {       
           return <SingleItem key={item.id} toggleSetActive={toggleSetActive} item={item}/>;
